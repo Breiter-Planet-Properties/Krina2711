@@ -1,0 +1,52 @@
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin: $gap*2.5 0;
+  input {
+    height: 35px;
+    padding: $gap;
+    border: none;
+    border-radius: $gap*2;
+    background-color: $gray-light;
+    width: 100%;
+  }
+  &.month {
+    input {
+      padding-right: $gap*4;
+    }
+    &:after {
+      position: absolute;
+      right: $gap;
+      top: $gap*.6;
+      content: '/mo';
+    }
+  }
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999;
+}
+
+button {
+  width: 100%;
+  border: none;
+  height: 35px;
+  border-radius: $gap*2;
+  cursor: pointer;
+  &.border {
+    border-color: $gray-light;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: $gap;
+}
