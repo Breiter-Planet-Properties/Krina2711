@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order Page</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/googleMap.js"></script>
+  </head>
+<body>
+  <div class="main">
+    <div class="main-container">
+      placeholder
+    </div>
+    <div class="sidebar">
+      <div class="block-one">
+        <h2>Panel Name</h2>
+        <p>Description</p>
+        <h4>Enter your average monthly electric bill and home address</h4>
+        <p>Description</p>
+        <div class="form">
+          <div class="input-wrapper month">
+            <input type="text" placeholder="Average eletric bill">
+          </div>
+          <div class="input-wrapper">
+            <input type="text" placeholder="Home address" id="autocomplete" onFocus="geolocate()">
+          </div>
+          <button class="border" onclick="switchBlock()">See Recommendation</button>
+        </div>
+      </div>
+      <div class="block-two hidden">
+        <h2>Select Your Solar Panels</h2>
+        <div class="panel recommend-info flex justify-between">
+          <div class="left">
+            <span class="des">Recommends</span>
+            <span class="title">7.56 kW Solar Panels</span>
+            <span class="price">$13,430</span>
+          </div>
+          <div class="right">
+            <img src="img/image-placeholder-png-2.png" alt="">
+          </div>
+        </div>
+        <div class="panel store-energy flex justify-between">
+          <div class="left">
+            <span class="des">Store Energy</span>
+            <span class="title">2 Powerwalls</span>
+            <span class="price">$9,942</span>
+            <button>Add</button>
+          </div>
+          <div class="right">
+            <img src="img/image-placeholder-png-2.png" alt="">
+          </div>
+        </div>
+        <div class="price-detail">
+          <h4 class="flex justify-between"><span>Due Today</span><span>$100</span></h4>
+          <div class="flex justify-between"><span>Solar Panels</span><span>$19,500</span></div>
+          <div class="flex justify-between"><span>Federal Tax Credit</span><span>-$5,070</span></div>
+          <div class="flex justify-between"><span>MA Solar Tax Credit</span><span>-$1,000</span></div>
+          <hr>
+          <div class="flex justify-between"><span>Price after</span><span>$13,430</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

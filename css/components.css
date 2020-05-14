@@ -1,0 +1,26 @@
+.panel {
+  font-size: 14px;
+  border: 1px #f5f5f5 solid;
+  border-radius: 20px;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+}
+.panel span {
+  display: block;
+  margin-bottom: 5px;
+}
+.panel span.title {
+  font-weight: 600;
+}
+.panel span.price {
+  margin-bottom: 20px;
+}
+.panel img {
+  background-color: #f5f5f5;
+  width: 80px;
+}
+
+.price-detail div {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
