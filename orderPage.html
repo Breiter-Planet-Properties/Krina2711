@@ -16,7 +16,6 @@
 <body>
   <div class="main">
     <div class="main-container">
-      <!-- <img src="img/roof.jpg" alt=""> -->
       <div class="roof"></div>
     </div>
     <div class="sidebar">
@@ -32,7 +31,7 @@
           <div class="input-wrapper">
             <input type="text" placeholder="Home address" id="autocomplete" onFocus="geolocate()">
           </div>
-          <button class="border" onclick="switchBlock()">See Recommendation</button>
+          <button onclick="switchBlock()">See Recommendation</button>
         </div>
       </div>
       <div class="block-two hidden">
@@ -59,6 +58,13 @@
               <img src="img/image-placeholder-png-2.png" alt="">
             </div>
           </div>
+          <div class="size-option flex wrap">
+            <h4>The Size Option</h4>
+            <button class="border" onclick="selectSize(this)">Small</button>
+            <button class="border" onclick="selectSize(this)">Medium</button>
+            <button class="border" onclick="selectSize(this)">Large</button>
+            <button class="border" onclick="selectSize(this)">Extra Large</button>
+          </div>
           <div class="price-detail">
             <h4 class="flex justify-between"><span>Due Today</span><span>$100</span></h4>
             <div class="flex justify-between"><span>Solar Panels</span><span>$19,500</span></div>
@@ -68,10 +74,8 @@
             <div class="flex justify-between"><span>Price after</span><span>$13,430</span></div>
           </div>
         </div>
+
         <div>
-          <div class="input-wrapper month">
-            <input type="text" placeholder="Savings amount">
-          </div>
           <h2>Account Details</h2>
           <div class="form">
             <div class="input-wrapper">
@@ -106,7 +110,7 @@
             <div class="input-wrapper">
               <input type="text" placeholder="3-digit cvv">
             </div>
-            <button class="border">Submit</button>
+            <button>Submit</button>
           </div>
         </div>
       </div>

@@ -42,7 +42,15 @@ button {
   cursor: pointer;
 }
 button.border {
-  border-color: #f5f5f5;
+  border: 2px #efefef solid;
+  background-color: white;
+}
+button.border:hover, button.border.selected {
+  background-color: #efefef;
+}
+
+button, input {
+  outline: none !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

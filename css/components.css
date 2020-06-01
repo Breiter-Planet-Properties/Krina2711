@@ -31,3 +31,14 @@
   background: no-repeat url('../img/roof.jpg');
   background-size: cover;
 }
+
+.size-option {
+  font-size: 14px;
+}
+.size-option button {
+  margin: 0 15px 15px 0;
+  max-width: 100px;
+}
+.size-option h4 {
+  width: 100%;
+}
