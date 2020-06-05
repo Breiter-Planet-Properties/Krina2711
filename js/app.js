@@ -21,7 +21,7 @@ function switchBlock() {
       moduleNum = 30
       sizeOption = 'Large'
       break
-    case sysSize <= 16:
+    case sysSize > 12:
       sysSize = 16
       moduleNum = 40
       sizeOption = 'Extra large'
@@ -30,11 +30,9 @@ function switchBlock() {
   // Here is the price based on the recommended system size
   let price = sysSize*4000
   // Fill in the panel
-  document.querySelector('.recommend-info .title').innerHTML = `${sizeOption} system size solar panel for ${sysSize}kw`
-  document.querySelector('.recommend-info .price').innerHTML = `$${price}`
-  let className = `.size-option .${sizeOption.charAt(0).toLowerCase()}`
-  document.querySelector(className).classList.add('selected')
-  // Show the recommendation
+  fillPanel(sizeOption, sysSize, price)
+
+  // Switch the panel
   document.getElementsByClassName('block-one')[0].classList.add('hidden');
   document.getElementsByClassName('block-two')[0].classList.remove('hidden');
 }
@@ -44,5 +42,41 @@ function selectSize(obj) {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].classList.remove('selected')
   }
+  let sizeOption = obj.classList[1]
+  let sysSize = 4
+  switch (sizeOption) {
+    case 's':
+      sysSize = 4
+      moduleNum = 10
+      sizeOption = 'Small'
+      break
+    case 'm':
+      sysSize = 8
+      moduleNum = 20
+      sizeOption = 'Medium'
+      break
+    case 'l':
+      sysSize = 12
+      moduleNum = 30
+      sizeOption = 'Large'
+      break
+    case 'e':
+      sysSize = 16
+      moduleNum = 40
+      sizeOption = 'Extra large'
+      break
+    }
+  let price = sysSize*4000
+  fillPanel(sizeOption, sysSize, price)
   obj.classList.add('selected')
+}
+
+function fillPanel(sizeOption, sysSize, price) {
+  document.querySelector('.recommend-info .title').innerHTML = `${sizeOption} system size solar panel for ${sysSize}kw`
+  document.querySelector('.recommend-info .price').innerHTML = `$${price}`
+  let className = `.size-option .${sizeOption.charAt(0).toLowerCase()}`
+  document.querySelector(className).classList.add('selected')
+  // Show the recommendation
+  document.querySelector('.roof .module').style['background-image'] = `url(./img/${sizeOption.charAt(0).toLowerCase()}.png)`
+  document.querySelector('.roof .module').style.opacity = 1
 }

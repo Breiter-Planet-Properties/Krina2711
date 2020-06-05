@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Order Page</title>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/googleMap.js"></script>
   </head>
 <body>
   <div class="main">
@@ -29,9 +27,6 @@
         <div class="form">
           <div class="input-wrapper month">
             <input type="text" placeholder="Average eletric bill">
-          </div>
-          <div class="input-wrapper">
-            <input type="text" placeholder="Home address" id="autocomplete" onFocus="geolocate()">
           </div>
           <button onclick="switchBlock()">See Recommendation</button>
         </div>
@@ -74,45 +69,6 @@
             <div class="flex justify-between"><span>MA Solar Tax Credit</span><span>-$1,000</span></div>
             <hr>
             <div class="flex justify-between"><span>Price after</span><span>$13,430</span></div>
-          </div>
-        </div>
-
-        <div>
-          <h2>Account Details</h2>
-          <div class="form">
-            <div class="input-wrapper">
-              <input type="text" placeholder="First Name">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="Last Name">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="E-mail">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="Contact Number">
-            </div>
-          </div>
-        </div>
-        <div>
-          <h2>Payment</h2>
-          <div class="form">
-            <div class="input-wrapper">
-              <input type="text" placeholder="Address">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="Name on the Card">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="Card Number">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="Expiry Date">
-            </div>
-            <div class="input-wrapper">
-              <input type="text" placeholder="3-digit cvv">
-            </div>
-            <button>Submit</button>
           </div>
         </div>
       </div>
