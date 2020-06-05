@@ -5,6 +5,9 @@
   padding: 20px 15px;
   margin-bottom: 20px;
 }
+.panel .left {
+  margin-right: 20px;
+}
 .panel span {
   display: block;
   margin-bottom: 5px;
@@ -26,10 +29,25 @@
 }
 
 .roof {
+  position: relative;
   width: 100%;
   height: 100%;
-  background: no-repeat url('../img/roof.jpg');
+  background: no-repeat url('../img/roof.png');
   background-size: cover;
+  background-position: center;
+}
+.roof .module {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-image: url('../img/panel-for-roof.png'); */
 }
 
 .size-option {
