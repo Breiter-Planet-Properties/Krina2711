@@ -49,7 +49,7 @@ button.border:hover, button.border.selected {
   background-color: #efefef;
 }
 
-button, input {
+button, input, select {
   outline: none !important;
 }
 

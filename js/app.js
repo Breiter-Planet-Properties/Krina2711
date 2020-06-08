@@ -1,6 +1,6 @@
 function switchBlock() {
   let bill = document.querySelector('.month input').value
-  // Here is the formula of calculating the original system size
+  // Calculating the original system size
   let sysSize = Math.ceil((bill*12)/(0.2*1200))
   let moduleNum = 0
   let sizeOption = 'Small'
@@ -27,12 +27,11 @@ function switchBlock() {
       sizeOption = 'Extra large'
       break
   }
-  // Here is the price based on the recommended system size
-  let price = sysSize*4000
+  // The price based on the recommended system size
+  let panelPrice = sysSize*4000
   // Fill in the panel
-  fillPanel(sizeOption, sysSize, price)
-
-  // Switch the panel
+  fillPanel(sizeOption, sysSize, panelPrice)
+  // Show the recommendation
   document.getElementsByClassName('block-one')[0].classList.add('hidden');
   document.getElementsByClassName('block-two')[0].classList.remove('hidden');
 }
@@ -69,14 +68,60 @@ function selectSize(obj) {
   let price = sysSize*4000
   fillPanel(sizeOption, sysSize, price)
   obj.classList.add('selected')
+
+  calculateTotalPrice()
 }
 
 function fillPanel(sizeOption, sysSize, price) {
   document.querySelector('.recommend-info .title').innerHTML = `${sizeOption} system size solar panel for ${sysSize}kw`
   document.querySelector('.recommend-info .price').innerHTML = `$${price}`
+  
   let className = `.size-option .${sizeOption.charAt(0).toLowerCase()}`
   document.querySelector(className).classList.add('selected')
-  // Show the recommendation
   document.querySelector('.roof .module').style['background-image'] = `url(./img/${sizeOption.charAt(0).toLowerCase()}.png)`
   document.querySelector('.roof .module').style.opacity = 1
+
+  // Calculating the total price
+  calculateTotalPrice()
+}
+
+let addPowerwall = false
+
+function togglePowerwall() {
+  let status = document.querySelector('.store-energy button').innerHTML
+  if (status === 'Add') {
+    addPowerwall = true
+    document.querySelector('.store-energy button').innerHTML = 'Remove'
+  } else {
+    addPowerwall = false
+    document.querySelector('.store-energy button').innerHTML = 'Add'
+  }
+  calculateTotalPrice()
+}
+
+function calculateTotalPrice() {
+  let panelPrice = parseInt(document.querySelector('.recommend-info .price').innerHTML.slice(1))
+  
+  let powerwallNum = document.querySelector('.store-energy select').value
+  let powerPrice = 10000
+  if (powerwallNum == 2) {
+    powerPrice = 18000
+  }
+
+  let beforeTaxPrice = panelPrice + (addPowerwall ? powerPrice : 0)
+  let fedTaxPrice = 0.26*beforeTaxPrice
+  let totalPrice = beforeTaxPrice - fedTaxPrice
+
+  document.querySelector('.price-detail .solar .price').innerHTML = `$${panelPrice}`
+  document.querySelector('.price-detail .tax .price').innerHTML = `-$${fedTaxPrice}`
+  document.querySelector('.price-detail .total .price').innerHTML = `$${totalPrice}`
+}
+
+function changeOption() {
+  let powerwallNum = document.querySelector('.store-energy select').value
+  let powerPrice = 10000
+  if (powerwallNum == 2) {
+    powerPrice = 18000
+  }
+  document.querySelector('.store-energy .price').innerHTML = `$${powerPrice}`
 }
