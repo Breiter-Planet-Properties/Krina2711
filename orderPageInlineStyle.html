@@ -44,10 +44,167 @@
         // Show the recommendation
         document.getElementsByClassName('block-one')[0].style.display = 'none';
         document.getElementsByClassName('block-two')[0].style.display = 'block';
+
+              // Checkout
+      /*<![CDATA[*/
+    // (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'breiter-planet-properties.myshopify.com',
+          storefrontAccessToken: 'd37fd79bc63b891caaf19c72a2caacef',
+        });
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: '4707485319277',
+            node: document.getElementById('product-component-1590720146988'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+      "product": {
+        "styles": {
+          "product": {
+            "@media (min-width: 601px)": {
+              "max-width": "calc(25% - 20px)",
+              "margin-left": "20px",
+              "margin-bottom": "50px"
+            }
+          },
+          "button": {
+            "font-size": "18px",
+            "padding-top": "17px",
+            "padding-bottom": "17px",
+            ":hover": {
+              "background-color": "#207f61"
+            },
+            "background-color": "#248d6c",
+            ":focus": {
+              "background-color": "#207f61"
+            }
+          },
+          "quantityInput": {
+            "font-size": "18px",
+            "padding-top": "17px",
+            "padding-bottom": "17px"
+          }
+        },
+        "buttonDestination": "checkout",
+        "contents": {
+          "img": false,
+          "title": false,
+          "price": false
+        },
+        "text": {
+          "button": "Buy now"
+        }
+      },
+      "productSet": {
+        "styles": {
+          "products": {
+            "@media (min-width: 601px)": {
+              "margin-left": "-20px"
+            }
+          }
+        }
+      },
+      "modalProduct": {
+        "contents": {
+          "img": false,
+          "imgWithCarousel": true,
+          "button": false,
+          "buttonWithQuantity": true
+        },
+        "styles": {
+          "product": {
+            "@media (min-width: 601px)": {
+              "max-width": "100%",
+              "margin-left": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "button": {
+            "font-size": "18px",
+            "padding-top": "17px",
+            "padding-bottom": "17px",
+            ":hover": {
+              "background-color": "#207f61"
+            },
+            "background-color": "#248d6c",
+            ":focus": {
+              "background-color": "#207f61"
+            }
+          },
+          "quantityInput": {
+            "font-size": "18px",
+            "padding-top": "17px",
+            "padding-bottom": "17px"
+          }
+        },
+        "text": {
+          "button": "Add to cart"
+        }
+      },
+      "cart": {
+        "styles": {
+          "button": {
+            "font-size": "18px",
+            "padding-top": "17px",
+            "padding-bottom": "17px",
+            ":hover": {
+              "background-color": "#207f61"
+            },
+            "background-color": "#248d6c",
+            ":focus": {
+              "background-color": "#207f61"
+            }
+          }
+        },
+        "text": {
+          "total": "Subtotal",
+          "button": "Checkout"
+        },
+        "popup": false
+      },
+      "toggle": {
+        "styles": {
+          "toggle": {
+            "background-color": "#248d6c",
+            ":hover": {
+              "background-color": "#207f61"
+            },
+            ":focus": {
+              "background-color": "#207f61"
+            }
+          },
+          "count": {
+            "font-size": "18px"
+          }
+        }
+      }
+    },
+          });
+        });
+      }
+    // })();
+    /*]]>*/
       }
 
       document.querySelectorAll('.size-option button').forEach(e => {
-        console.log(1)
         e.onclick = function selectSize() {
           let buttons = document.querySelectorAll('.size-option button')
           for (let i = 0; i < buttons.length; i++) {
@@ -203,7 +360,7 @@
           <hr style="transition: all .2s;box-sizing: content-box;height: 0;overflow: visible;">
           <div class="flex justify-between total" style="transition: all .2s;box-sizing: border-box;display: flex;margin-bottom: 10px;font-size: 14px;justify-content: space-between;"><span style="transition: all .2s;box-sizing: border-box;">Price after</span><span class="price" style="transition: all .2s;box-sizing: border-box;">$13,430</span></div>
         </div>
-        <button style="transition: all .2s;box-sizing: border-box;font-family: inherit;font-size: 100%;line-height: 1.15;margin: 0;overflow: visible;text-transform: none;-webkit-appearance: button;width: 100%;border: none;height: 35px;border-radius: 20px;cursor: pointer;outline: none !important;">Checkout</button>
+        <div id='product-component-1590720146988'></div>
       </div>
     </div>
   </div>
