@@ -6,308 +6,312 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Order Page</title>
     <script>
-    window.onload = function() {
-
-      document.querySelector('.switchButton').onclick = function switchBlock() {
-        let bill = document.querySelector('.month input').value
-        // Calculating the original system size
-        let sysSize = Math.ceil((bill*12)/(0.2*1200))
-        let moduleNum = 0
-        let sizeOption = 'Small'
-        // Recommended system size and number of module based on the original system size
-        switch (true) {
-        case sysSize <= 4:
-          sysSize = 4
-          moduleNum = 10
-          sizeOption = 'Small'
-          break
-        case sysSize <= 8:
-          sysSize = 8
-          moduleNum = 20
-          sizeOption = 'Medium'
-          break
-        case sysSize <= 12:
-          sysSize = 12
-          moduleNum = 30
-          sizeOption = 'Large'
-          break
-        case sysSize > 12:
-          sysSize = 16
-          moduleNum = 40
-          sizeOption = 'Extra large'
-          break
-        }
-        // The price based on the recommended system size
-        let panelPrice = sysSize*4000
-        // Fill in the panel
-        fillPanel(sizeOption, sysSize, panelPrice)
-        // Show the recommendation
-        document.getElementsByClassName('block-one')[0].style.display = 'none';
-        document.getElementsByClassName('block-two')[0].style.display = 'block';
-
-              // Checkout
-      /*<![CDATA[*/
-    // (function () {
-      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
-      function loadScript() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = scriptURL;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-        script.onload = ShopifyBuyInit;
-      }
-      function ShopifyBuyInit() {
-        var client = ShopifyBuy.buildClient({
-          domain: 'breiter-planet-properties.myshopify.com',
-          storefrontAccessToken: 'd37fd79bc63b891caaf19c72a2caacef',
-        });
-        ShopifyBuy.UI.onReady(client).then(function (ui) {
-          ui.createComponent('product', {
-            id: '4707485319277',
-            node: document.getElementById('product-component-1590720146988'),
-            moneyFormat: '%24%7B%7Bamount%7D%7D',
-            options: {
-      "product": {
-        "styles": {
-          "product": {
-            "@media (min-width: 601px)": {
-              "max-width": "calc(25% - 20px)",
-              "margin-left": "20px",
-              "margin-bottom": "50px"
-            }
-          },
-          "button": {
-            "font-size": "18px",
-            "padding-top": "17px",
-            "padding-bottom": "17px",
-            ":hover": {
-              "background-color": "#207f61"
-            },
-            "background-color": "#248d6c",
-            ":focus": {
-              "background-color": "#207f61"
-            }
-          },
-          "quantityInput": {
-            "font-size": "18px",
-            "padding-top": "17px",
-            "padding-bottom": "17px"
-          }
-        },
-        "buttonDestination": "checkout",
-        "contents": {
-          "img": false,
-          "title": false,
-          "price": false
-        },
-        "text": {
-          "button": "Buy now"
-        }
-      },
-      "productSet": {
-        "styles": {
-          "products": {
-            "@media (min-width: 601px)": {
-              "margin-left": "-20px"
-            }
-          }
-        }
-      },
-      "modalProduct": {
-        "contents": {
-          "img": false,
-          "imgWithCarousel": true,
-          "button": false,
-          "buttonWithQuantity": true
-        },
-        "styles": {
-          "product": {
-            "@media (min-width: 601px)": {
-              "max-width": "100%",
-              "margin-left": "0px",
-              "margin-bottom": "0px"
-            }
-          },
-          "button": {
-            "font-size": "18px",
-            "padding-top": "17px",
-            "padding-bottom": "17px",
-            ":hover": {
-              "background-color": "#207f61"
-            },
-            "background-color": "#248d6c",
-            ":focus": {
-              "background-color": "#207f61"
-            }
-          },
-          "quantityInput": {
-            "font-size": "18px",
-            "padding-top": "17px",
-            "padding-bottom": "17px"
-          }
-        },
-        "text": {
-          "button": "Add to cart"
-        }
-      },
-      "cart": {
-        "styles": {
-          "button": {
-            "font-size": "18px",
-            "padding-top": "17px",
-            "padding-bottom": "17px",
-            ":hover": {
-              "background-color": "#207f61"
-            },
-            "background-color": "#248d6c",
-            ":focus": {
-              "background-color": "#207f61"
-            }
-          }
-        },
-        "text": {
-          "total": "Subtotal",
-          "button": "Checkout"
-        },
-        "popup": false
-      },
-      "toggle": {
-        "styles": {
-          "toggle": {
-            "background-color": "#248d6c",
-            ":hover": {
-              "background-color": "#207f61"
-            },
-            ":focus": {
-              "background-color": "#207f61"
-            }
-          },
-          "count": {
-            "font-size": "18px"
-          }
-        }
-      }
-    },
-          });
-        });
-      }
-    // })();
-    /*]]>*/
-      }
-
-      document.querySelectorAll('.size-option button').forEach(e => {
-        e.onclick = function selectSize() {
-          let buttons = document.querySelectorAll('.size-option button')
-          for (let i = 0; i < buttons.length; i++) {
-          buttons[i].style['background-color'] = '#fff'
-          }
-          let sizeOption = e.classList[1]
-          let sysSize = 4
-          switch (sizeOption) {
-          case 's':
+      window.onload = function() {
+        document.querySelector('.switchButton').onclick = function switchBlock() {
+          let bill = document.querySelector('.month input').value
+          // Calculating the original system size
+          let sysSize = Math.ceil((bill*12)/(0.2*1200))
+          let moduleNum = 0
+          let sizeOption = 'Small'
+          // Recommended system size and number of module based on the original system size
+          switch (true) {
+          case sysSize <= 4:
             sysSize = 4
             moduleNum = 10
             sizeOption = 'Small'
             break
-          case 'm':
+          case sysSize <= 8:
             sysSize = 8
             moduleNum = 20
             sizeOption = 'Medium'
             break
-          case 'l':
+          case sysSize <= 12:
             sysSize = 12
             moduleNum = 30
             sizeOption = 'Large'
             break
-          case 'e':
+          case sysSize > 12:
             sysSize = 16
             moduleNum = 40
             sizeOption = 'Extra large'
             break
           }
-          let price = sysSize*4000
-          fillPanel(sizeOption, sysSize, price)
-          e.style['background-color'] = '#efefef'
+          // The price based on the recommended system size
+          let panelPrice = sysSize*4000
+          // Fill in the panel
+          fillPanel(sizeOption, sysSize, panelPrice)
+          // Show the recommendation
+          document.getElementsByClassName('block-one')[0].style.display = 'none';
+          document.getElementsByClassName('block-two')[0].style.display = 'block';
 
+        // Shopify checkout
+        /*<![CDATA[*/
+        var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+        if (window.ShopifyBuy) {
+          if (window.ShopifyBuy.UI) {
+            ShopifyBuyInit();
+          } else {
+            loadScript();
+          }
+        } else {
+          loadScript();
+        }
+        function loadScript() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = scriptURL;
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+          script.onload = ShopifyBuyInit;
+        }
+        function ShopifyBuyInit() {
+          var client = ShopifyBuy.buildClient({
+            domain: 'breiter-planet-properties.myshopify.com',
+            storefrontAccessToken: 'd37fd79bc63b891caaf19c72a2caacef',
+          });
+          ShopifyBuy.UI.onReady(client).then(function (ui) {
+            ui.createComponent('product', {
+              id: '4707485319277',
+              node: document.getElementById('product-component-1590720146988'),
+              moneyFormat: '%24%7B%7Bamount%7D%7D',
+              options: {
+                "product": {
+                  "styles": {
+                    "product": {
+                      "@media (min-width: 601px)": {
+                        "max-width": "calc(25% - 20px)",
+                        "margin-left": "20px",
+                        "margin-bottom": "50px"
+                      }
+                    },
+                    "button": {
+                      "font-size": "18px",
+                      "padding-top": "17px",
+                      "padding-bottom": "17px",
+                      ":hover": {
+                        "background-color": "#207f61"
+                      },
+                      "background-color": "#248d6c",
+                      ":focus": {
+                        "background-color": "#207f61"
+                      }
+                    },
+                    "quantityInput": {
+                      "font-size": "18px",
+                      "padding-top": "17px",
+                      "padding-bottom": "17px"
+                    }
+                  },
+                  "buttonDestination": "checkout",
+                  "contents": {
+                    "img": false,
+                    "title": false,
+                    "price": false
+                  },
+                  "text": {
+                    "button": "Buy now"
+                  }
+                },
+                "productSet": {
+                  "styles": {
+                    "products": {
+                      "@media (min-width: 601px)": {
+                        "margin-left": "-20px"
+                      }
+                    }
+                  }
+                },
+                "modalProduct": {
+                  "contents": {
+                    "img": false,
+                    "imgWithCarousel": true,
+                    "button": false,
+                    "buttonWithQuantity": true
+                  },
+                  "styles": {
+                    "product": {
+                      "@media (min-width: 601px)": {
+                        "max-width": "100%",
+                        "margin-left": "0px",
+                        "margin-bottom": "0px"
+                      }
+                    },
+                    "button": {
+                      "font-size": "18px",
+                      "padding-top": "17px",
+                      "padding-bottom": "17px",
+                      ":hover": {
+                        "background-color": "#207f61"
+                      },
+                      "background-color": "#248d6c",
+                      ":focus": {
+                        "background-color": "#207f61"
+                      }
+                    },
+                    "quantityInput": {
+                      "font-size": "18px",
+                      "padding-top": "17px",
+                      "padding-bottom": "17px"
+                    }
+                  },
+                  "text": {
+                    "button": "Add to cart"
+                  }
+                },
+                "cart": {
+                  "styles": {
+                    "button": {
+                      "font-size": "18px",
+                      "padding-top": "17px",
+                      "padding-bottom": "17px",
+                      ":hover": {
+                        "background-color": "#207f61"
+                      },
+                      "background-color": "#248d6c",
+                      ":focus": {
+                        "background-color": "#207f61"
+                      }
+                    }
+                  },
+                  "text": {
+                    "total": "Subtotal",
+                    "button": "Checkout"
+                  },
+                  "popup": false
+                },
+                "toggle": {
+                  "styles": {
+                    "toggle": {
+                      "background-color": "#248d6c",
+                      ":hover": {
+                        "background-color": "#207f61"
+                      },
+                      ":focus": {
+                        "background-color": "#207f61"
+                      }
+                    },
+                    "count": {
+                      "font-size": "18px"
+                    }
+                  }
+                }
+              },
+            });
+          });
+        }
+      /*]]>*/
+        }
+
+        // Switch the option of size
+        document.querySelectorAll('.size-option button').forEach(e => {
+          e.onclick = function selectSize() {
+            let buttons = document.querySelectorAll('.size-option button')
+            for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style['background-color'] = '#fff'
+            }
+            let sizeOption = e.classList[1]
+            let sysSize = 4
+            switch (sizeOption) {
+            case 's':
+              sysSize = 4
+              moduleNum = 10
+              sizeOption = 'Small'
+              break
+            case 'm':
+              sysSize = 8
+              moduleNum = 20
+              sizeOption = 'Medium'
+              break
+            case 'l':
+              sysSize = 12
+              moduleNum = 30
+              sizeOption = 'Large'
+              break
+            case 'e':
+              sysSize = 16
+              moduleNum = 40
+              sizeOption = 'Extra large'
+              break
+            }
+            let price = sysSize*4000
+            fillPanel(sizeOption, sysSize, price)
+            e.style['background-color'] = '#efefef'
+
+            calculateTotalPrice()
+          }
+        })
+
+        // Fill in the panel
+        function fillPanel(sizeOption, sysSize, price) {
+          document.querySelector('.recommend-info .title').innerHTML = `${sizeOption} system size solar panel for ${sysSize}kw`
+          document.querySelector('.recommend-info .price').innerHTML = '$'+`${price}`
+
+          let className = `.size-option .${sizeOption.charAt(0).toLowerCase()}`
+          document.querySelector(className).style['background-color'] = '#efefef'
+          document.querySelector('.roof .module').style['background-image'] = `url(https://f.hubspotusercontent20.net/hubfs/4287976/${sizeOption.charAt(0).toLowerCase()}.png)`
+          document.querySelector('.roof .module').style.opacity = 1
+
+          // Calculating the total price
           calculateTotalPrice()
         }
-      })
 
-      function fillPanel(sizeOption, sysSize, price) {
-        document.querySelector('.recommend-info .title').innerHTML = `${sizeOption} system size solar panel for ${sysSize}kw`
-        document.querySelector('.recommend-info .price').innerHTML = '$'+`${price}`
-
-        let className = `.size-option .${sizeOption.charAt(0).toLowerCase()}`
-        document.querySelector(className).style['background-color'] = '#efefef'
-        document.querySelector('.roof .module').style['background-image'] = `url(https://f.hubspotusercontent20.net/hubfs/4287976/${sizeOption.charAt(0).toLowerCase()}.png)`
-        document.querySelector('.roof .module').style.opacity = 1
+        // Toggle powerwall
+        let addPowerwall = false
+        document.querySelector('.store-energy button').onclick = function togglePowerwall() {
+          let status = document.querySelector('.store-energy button').innerHTML
+          if (status === 'Add') {
+          addPowerwall = true
+          document.querySelector('.store-energy button').innerHTML = 'Remove'
+          } else {
+          addPowerwall = false
+          document.querySelector('.store-energy button').innerHTML = 'Add'
+          }
+          calculateTotalPrice()
+        }
 
         // Calculating the total price
-        calculateTotalPrice()
-      }
+        function calculateTotalPrice() {
+          let panelPrice = parseInt(document.querySelector('.recommend-info .price').innerHTML.slice(1))
 
-      let addPowerwall = false
+          let powerwallNum = document.querySelector('.store-energy select').value
+          let powerPrice = 10000
+          if (powerwallNum == 2) {
+          powerPrice = 18000
+          }
 
-      document.querySelector('.store-energy button').onclick = function togglePowerwall() {
-        let status = document.querySelector('.store-energy button').innerHTML
-        if (status === 'Add') {
-        addPowerwall = true
-        document.querySelector('.store-energy button').innerHTML = 'Remove'
-        } else {
-        addPowerwall = false
-        document.querySelector('.store-energy button').innerHTML = 'Add'
-        }
-        calculateTotalPrice()
-      }
+          let beforeTaxPrice = panelPrice + (addPowerwall ? powerPrice : 0)
+          let fedTaxPrice = 0.26*beforeTaxPrice
+          let totalPrice = beforeTaxPrice - fedTaxPrice
 
-      function calculateTotalPrice() {
-        let panelPrice = parseInt(document.querySelector('.recommend-info .price').innerHTML.slice(1))
-
-        let powerwallNum = document.querySelector('.store-energy select').value
-        let powerPrice = 10000
-        if (powerwallNum == 2) {
-        powerPrice = 18000
+          document.querySelector('.price-detail .solar .price').innerHTML = '$'+`${panelPrice}`
+          document.querySelector('.price-detail .power .price').innerHTML = '$'+`${addPowerwall ? powerPrice : 0}`
+          document.querySelector('.price-detail .tax .price').innerHTML = '-$'+`${fedTaxPrice}`
+          document.querySelector('.price-detail .total .price').innerHTML = '$'+`${totalPrice}`
         }
 
-        let beforeTaxPrice = panelPrice + (addPowerwall ? powerPrice : 0)
-        let fedTaxPrice = 0.26*beforeTaxPrice
-        let totalPrice = beforeTaxPrice - fedTaxPrice
-
-        document.querySelector('.price-detail .solar .price').innerHTML = '$'+`${panelPrice}`
-        document.querySelector('.price-detail .power .price').innerHTML = '$'+`${addPowerwall ? powerPrice : 0}`
-        document.querySelector('.price-detail .tax .price').innerHTML = '-$'+`${fedTaxPrice}`
-        document.querySelector('.price-detail .total .price').innerHTML = '$'+`${totalPrice}`
-      }
-
-      document.querySelector('.store-energy select').onchange = function changeOption() {
-        let powerwallNum = document.querySelector('.store-energy select').value
-        let powerPrice = 10000
-        if (powerwallNum == 2) {
-        powerPrice = 18000
+        // Select the number of powerwall
+        document.querySelector('.store-energy select').onchange = function changeOption() {
+          let powerwallNum = document.querySelector('.store-energy select').value
+          let powerPrice = 10000
+          if (powerwallNum == 2) {
+          powerPrice = 18000
+          }
+          document.querySelector('.store-energy .price').innerHTML = '$'+`${powerPrice}`
         }
-        document.querySelector('.store-energy .price').innerHTML = '$'+`${powerPrice}`
       }
-    }
-
     </script>
 </head>
 <body style="margin: 0;">
 <div class="main" style="transition: all .2s;box-sizing: border-box;background-color: #fff;margin: auto;display: flex;height: 100%;overflow: hidden;">
+  <!-- Roof Section -->
   <div class="main-container" style="transition: all .2s;box-sizing: border-box;margin: auto;height: 100vh;width: 100%;">
     <div class="roof" style="transition: all .2s;box-sizing: border-box;position: relative;width: 100%;height: 100%;background: no-repeat url(https://f.hubspotusercontent20.net/hubfs/4287976/roof.jpg);background-size: cover;background-position: center;">
+      <!-- Module Section -->
       <div class="module" style="transition: opacity 0.4s;box-sizing: border-box;position: absolute;top: 0;left: 0;width: 100%;height: 100%;opacity: 0;background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
     </div>
   </div>
+  <!-- Panel Section -->
   <div class="sidebar" style="transition: all .2s;box-sizing: border-box;height: 100vh;width: 400px;min-width: 400px;padding: 40px 30px;overflow-y: auto;">
+    <!-- Bill Section -->
     <div class="block-one" style="transition: all .2s;box-sizing: border-box;">
       <h4 style="transition: all .2s;box-sizing: border-box;border-bottom: 10px;">Enter your average monthly electric bill and home address</h4>
       <div class="form" style="transition: all .2s;box-sizing: border-box;">
@@ -317,9 +321,11 @@
         <button class="switchButton" style="transition: all .2s;box-sizing: border-box;font-family: inherit;font-size: 100%;line-height: 1.15;margin: 0;overflow: visible;text-transform: none;-webkit-appearance: button;width: 100%;border: none;height: 35px;border-radius: 20px;cursor: pointer;outline: none !important;">See Recommendation</button>
       </div>
     </div>
+    <!-- Detail Section -->
     <div class="block-two" style="transition: all .2s;box-sizing: border-box;display: none;">
       <div style="transition: all .2s;box-sizing: border-box;">
         <h2 style="transition: all .2s;box-sizing: border-box;border-bottom: 10px;">Select Your Solar Panels</h2>
+        <!-- Solar Panel Section -->
         <div class="panel recommend-info flex justify-between" style="transition: all .2s;box-sizing: border-box;display: flex;font-size: 14px;border: 1px #f5f5f5 solid;border-radius: 20px;padding: 20px 15px;margin-bottom: 20px;justify-content: space-between;">
           <div class="left" style="transition: all .2s;box-sizing: border-box;margin-right: 20px;">
             <span class="des" style="transition: all .2s;box-sizing: border-box;display: block;margin-bottom: 5px;">Recommends</span>
@@ -330,6 +336,7 @@
             <img src="https://f.hubspotusercontent20.net/hubfs/4287976/panel.png" alt="" style="transition: all .2s;box-sizing: border-box;border-style: none;max-width: 100%;width: 60px;min-width: 60px;">
           </div>
         </div>
+        <!-- Powerwall Section -->
         <div class="panel store-energy flex justify-between" style="transition: all .2s;box-sizing: border-box;display: flex;font-size: 14px;border: 1px #f5f5f5 solid;border-radius: 20px;padding: 20px 15px;margin-bottom: 20px;justify-content: space-between;">
           <div class="left" style="transition: all .2s;box-sizing: border-box;margin-right: 20px;">
             <span class="des" style="transition: all .2s;box-sizing: border-box;display: block;margin-bottom: 5px;">Store Energy</span>
@@ -346,6 +353,7 @@
             <img src="https://f.hubspotusercontent20.net/hubfs/4287976/powerwall.png" alt="" style="transition: all .2s;box-sizing: border-box;border-style: none;max-width: 100%;width: 60px;min-width: 60px;">
           </div>
         </div>
+        <!-- Size Option Section -->
         <div class="size-option flex wrap" style="transition: all .2s;box-sizing: border-box;display: flex;font-size: 14px;flex-wrap: wrap;">
           <h4 style="transition: all .2s;box-sizing: border-box;border-bottom: 10px;width: 100%;">The Size Option</h4>
           <button class="border s" style="transition: all .2s;box-sizing: border-box;font-family: inherit;font-size: 100%;line-height: 1.15;margin: 0 15px 15px 0;overflow: visible;text-transform: none;-webkit-appearance: button;width: 100%;border: 2px #efefef solid;height: 35px;border-radius: 20px;cursor: pointer;background-color: white;max-width: 100px;outline: none !important;">Small</button>
@@ -353,6 +361,7 @@
           <button class="border l" style="transition: all .2s;box-sizing: border-box;font-family: inherit;font-size: 100%;line-height: 1.15;margin: 0 15px 15px 0;overflow: visible;text-transform: none;-webkit-appearance: button;width: 100%;border: 2px #efefef solid;height: 35px;border-radius: 20px;cursor: pointer;background-color: white;max-width: 100px;outline: none !important;">Large</button>
           <button class="border e" style="transition: all .2s;box-sizing: border-box;font-family: inherit;font-size: 100%;line-height: 1.15;margin: 0 15px 15px 0;overflow: visible;text-transform: none;-webkit-appearance: button;width: 100%;border: 2px #efefef solid;height: 35px;border-radius: 20px;cursor: pointer;background-color: white;max-width: 100px;outline: none !important;">Extra Large</button>
         </div>
+        <!-- Total price Section -->
         <div class="price-detail" style="transition: all .2s;box-sizing: border-box;margin: 20px 0 30px 0">
           <div class="flex justify-between solar" style="transition: all .2s;box-sizing: border-box;display: flex;margin-bottom: 10px;font-size: 14px;justify-content: space-between;"><span style="transition: all .2s;box-sizing: border-box;">Solar Panels</span><span class="price" style="transition: all .2s;box-sizing: border-box;">$19,500</span></div>
           <div class="flex justify-between power" style="transition: all .2s;box-sizing: border-box;display: flex;margin-bottom: 10px;font-size: 14px;justify-content: space-between;"><span style="transition: all .2s;box-sizing: border-box;">Powerwalls</span><span class="price" style="transition: all .2s;box-sizing: border-box;">$0</span></div>
@@ -360,6 +369,7 @@
           <hr style="transition: all .2s;box-sizing: content-box;height: 0;overflow: visible;">
           <div class="flex justify-between total" style="transition: all .2s;box-sizing: border-box;display: flex;margin-bottom: 10px;font-size: 14px;justify-content: space-between;"><span style="transition: all .2s;box-sizing: border-box;">Price after</span><span class="price" style="transition: all .2s;box-sizing: border-box;">$13,430</span></div>
         </div>
+        <!-- Checkout Button -->
         <div id='product-component-1590720146988'></div>
       </div>
     </div>
